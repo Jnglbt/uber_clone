@@ -1,6 +1,6 @@
 # uber_clone
 
-A new Flutter project.
+UberEats clone with UI impleented only.
 
 ## Getting Started
 
