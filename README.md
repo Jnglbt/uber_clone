@@ -1,6 +1,6 @@
 # uber_clone
 
-UberEats clone with UI impleented only.
+UberEats clone with Firebase and BLoC.
 
 ## Getting Started
 
