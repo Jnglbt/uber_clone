@@ -8,6 +8,15 @@ import 'package:uber_clone/presentation/screens/home/home_screen.dart';
 import '../bloc/cubits/cubits.dart';
 
 class MainScreen extends StatelessWidget {
+  static const String routeName = '/';
+
+  static Route route() {
+    return MaterialPageRoute(
+      builder: (_) => const MainScreen(),
+      settings: const RouteSettings(name: routeName),
+    );
+  }
+
   const MainScreen({Key? key}) : super(key: key);
 
   @override

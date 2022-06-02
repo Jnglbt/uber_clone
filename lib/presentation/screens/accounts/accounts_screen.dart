@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uber_clone/presentation/screens/screens.dart';
+
+import '../../../repositories/repositories.dart';
 
 class AccountsScreen extends StatelessWidget {
   const AccountsScreen({Key? key}) : super(key: key);
@@ -46,6 +50,16 @@ class AccountsScreen extends StatelessWidget {
                   text: 'Promotions',
                 ),
               ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                RepositoryProvider.of<AuthRepository>(context).signOut();
+                Navigator.pushNamedAndRemoveUntil(context,
+                    LoginScreen.routeName, ModalRoute.withName('/login'));
+              },
+              child: Center(
+                child: Text('Sign out'),
+              ),
             ),
           ],
         ),
