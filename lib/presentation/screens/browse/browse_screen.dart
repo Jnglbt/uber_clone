@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../bloc/cubits/cubits.dart';
 import '../widgets/widgets.dart';
 
 Map<String, String> foodTypes = {
@@ -76,30 +78,46 @@ class BrowseScreen extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Expanded(
-                child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1,
-                    ),
-                    itemCount: foodTypes.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 5.0, horizontal: 5.0),
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.amber,
-                        ),
-                        child: FoodType(
-                          image: foodTypes.values.elementAt(index),
-                          text: foodTypes.keys.elementAt(index),
-                        ),
-                      );
-                    }),
+              BlocBuilder<FoodCategoriesCubit, FoodCategoriesState>(
+                builder: (context, state) {
+                  if (state is FoodCategoriesLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (state is FoodCategoriesLoaded) {
+                    return Expanded(
+                      child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1,
+                          ),
+                          itemCount: state.foodCategories.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 5.0, horizontal: 5.0),
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Colors.amber,
+                              ),
+                              child: FoodType(
+                                // image: foodTypes.values.elementAt(index),
+                                image:
+                                    state.foodCategories.keys.elementAt(index),
+                                text: state.foodCategories.values
+                                    .elementAt(index),
+                              ),
+                            );
+                          }),
+                    );
+                  } else {
+                    return Text('Something went wrong');
+                  }
+                },
               )
             ],
           ),
