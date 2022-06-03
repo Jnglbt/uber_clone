@@ -14,7 +14,7 @@ class RestaurantPlate extends StatelessWidget {
     required this.image,
     required this.name,
     this.isSponsored = false,
-    this.fee = 0.0,
+    this.fee = 0,
     required this.score,
     required this.minTime,
     required this.maxTime,
@@ -44,27 +44,27 @@ class RestaurantPlate extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Row(
                       children: [
                         isSponsored == true
-                            ? Text(
+                            ? const Text(
                                 'Sponsored',
                                 style: TextStyle(
                                     decoration: TextDecoration.underline),
                               )
                             : Container(),
                         isSponsored == true
-                            ? Padding(
+                            ? const Padding(
                                 padding: EdgeInsets.only(bottom: 5),
                                 child: Text(
                                   '.',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ))
                             : Container(),
-                        fee == 0.0 ? Text('No Fee') : Text('$fee zł Fee'),
-                        Padding(
+                        fee == 0 ? const Text('No Fee') : Text('$fee zł Fee'),
+                        const Padding(
                             padding: EdgeInsets.only(bottom: 5),
                             child: Text(
                               '.',
@@ -77,7 +77,7 @@ class RestaurantPlate extends StatelessWidget {
                 ),
               ),
               score >= 4.8
-                  ? Icon(
+                  ? const Icon(
                       Icons.tour_sharp,
                       size: 30,
                     )

@@ -7,4 +7,5 @@ abstract class BaseDatabaseRepository {
   Future<void> updateUserPictures(UserModel user, String image);
 
   Stream<List<CategoryModel>> getFoodCategories();
+  Stream<List<RestaurantModel>> getRestaurants(String? tag);
 }

@@ -22,4 +22,10 @@ class FoodCategoriesCubit extends Cubit<FoodCategoriesState> {
       emit(FoodCategoriesLoaded(foodCategories: foodCategories));
     });
   }
+
+  @override
+  Future<void> close() async {
+    _categorySubscription?.cancel();
+    super.close();
+  }
 }

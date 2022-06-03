@@ -34,7 +34,6 @@ class SignupCubit extends Cubit<SignupState> {
   }
 
   Future<String> signupWithCredentials() async {
-    // if (!state.isValid || state.status == SignupStatus.submitting) return;
     try {
       var user = await _authRepository.signUp(
           email: state.email, password: state.password);
