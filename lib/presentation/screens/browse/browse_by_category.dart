@@ -32,22 +32,26 @@ class BrowseByCategory extends StatelessWidget {
                 appBar: AppBar(
                   title: Text(state.tag),
                 ),
-                body: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: state.restaurants.length,
-                  itemBuilder: ((context, index) {
-                    var value = state.restaurants.values.elementAt(index);
-                    return RestaurantPlate(
-                      image: value['image'],
-                      name: value['name'],
-                      fee: value['fee'],
-                      score: value['score'],
-                      minTime: value['minTime'],
-                      maxTime: value['maxTime'],
-                      isSponsored: value['isSponsored'],
-                    );
-                  }),
+                body: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: state.restaurants.length,
+                    itemBuilder: ((context, index) {
+                      var value = state.restaurants.values.elementAt(index);
+                      return RestaurantByCategory(
+                        image: value['image'],
+                        name: value['name'],
+                        fee: value['fee'],
+                        score: value['score'],
+                        minTime: value['minTime'],
+                        maxTime: value['maxTime'],
+                        isSponsored: value['isSponsored'],
+                      );
+                    }),
+                  ),
                 ));
           } else {
             return Text('Something went wrong');
