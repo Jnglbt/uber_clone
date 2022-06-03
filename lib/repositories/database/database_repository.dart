@@ -51,13 +51,26 @@ class DatabaseRepositry extends BaseDatabaseRepository {
 
   @override
   Stream<List<RestaurantModel>> getRestaurants(String? tag) {
-    return _firebaseFirestore
-        .collection('restaurants')
-        // .orderBy('isSponsored', descending: true)
-        .where('tag', isEqualTo: tag)
-        .snapshots()
-        .map((snap) {
-      return snap.docs.map((doc) => RestaurantModel.fromSnapshot(doc)).toList();
-    });
+    return tag == null
+        ? _firebaseFirestore
+            .collection('restaurants')
+            .orderBy('isSponsored', descending: true)
+            .snapshots()
+            .map((snap) {
+            return snap.docs
+                .map((doc) => RestaurantModel.fromSnapshot(doc))
+                .toList();
+          })
+        : _firebaseFirestore
+            .collection('restaurants')
+            .where('tag', isEqualTo: tag)
+            // .orderBy('tag', descending: true)
+            // .orderBy('isSponsored', descending: true)
+            .snapshots()
+            .map((snap) {
+            return snap.docs
+                .map((doc) => RestaurantModel.fromSnapshot(doc))
+                .toList();
+          });
   }
 }
