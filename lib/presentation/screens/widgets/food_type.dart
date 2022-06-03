@@ -15,7 +15,7 @@ class FoodType extends StatelessWidget {
       children: [
         Expanded(
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
@@ -30,7 +30,7 @@ class FoodType extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
             ),
           ),

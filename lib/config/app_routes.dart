@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uber_clone/presentation/screens/browse/browse_by_category.dart';
 import 'package:uber_clone/presentation/screens/screens.dart';
 
 class AppRoutes {
@@ -12,6 +13,8 @@ class AppRoutes {
         return SplashScreen.route();
       case SignupScreen.routeName:
         return SignupScreen.route();
+      case BrowseByCategory.routeName:
+        return BrowseByCategory.route();
       // case MatchesScreen.routeName:
       //   return MatchesScreen.route();
       // case ProfileScreen.routeName:
