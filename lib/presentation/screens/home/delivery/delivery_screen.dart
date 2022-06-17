@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../bloc/cubits/cubits.dart';
+import '../../../../bloc/cubits/cubits.dart';
 import '../../widgets/widgets.dart';
 
 class DeliveryScreen extends StatelessWidget {
@@ -18,41 +18,64 @@ class DeliveryScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                height: 100,
-                padding: const EdgeInsets.all(5),
-                width: MediaQuery.of(context).size.width / 3 - 10,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.ac_unit,
-                      size: 50,
-                    ),
-                    Text('Text'),
-                  ],
-                ),
-              ),
-              Container(
-                height: 100,
-                width: MediaQuery.of(context).size.width / 3 - 10,
-                margin: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(15),
+              Expanded(
+                child: Container(
+                  height: 100,
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.food_bank,
+                        size: 50,
+                      ),
+                      Text('Restaurants'),
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                height: 100,
-                width: MediaQuery.of(context).size.width / 3 - 10,
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(15),
+              Expanded(
+                child: Container(
+                  height: 100,
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.local_drink,
+                        size: 50,
+                      ),
+                      Text('Alcohol'),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 100,
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.local_taxi,
+                        size: 50,
+                      ),
+                      Text('Ride'),
+                    ],
+                  ),
                 ),
               ),
             ],

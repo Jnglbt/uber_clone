@@ -9,60 +9,58 @@ class AccountsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.grey[400],
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text('Name Surname')
-                ],
-              ),
-            ),
-            Divider(
-              height: 2,
-              thickness: 1,
-            ),
-            Column(
+    return SafeArea(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Row(
               children: [
-                AccountField(
-                  icon: Icons.bookmark,
-                  text: 'Orders',
+                CircleAvatar(
+                  backgroundColor: Colors.grey[400],
                 ),
-                AccountField(
-                  icon: Icons.favorite,
-                  text: 'Your Favourites',
+                const SizedBox(
+                  width: 5,
                 ),
-                AccountField(
-                  icon: Icons.credit_card,
-                  text: 'Wallet',
-                ),
-                AccountField(
-                  icon: Icons.label,
-                  text: 'Promotions',
-                ),
+                const Text('Name Surname')
               ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                RepositoryProvider.of<AuthRepository>(context).signOut();
-                Navigator.pushNamedAndRemoveUntil(context,
-                    LoginScreen.routeName, ModalRoute.withName('/login'));
-              },
-              child: Center(
-                child: Text('Sign out'),
+          ),
+          const Divider(
+            height: 2,
+            thickness: 1,
+          ),
+          Column(
+            children: const [
+              AccountField(
+                icon: Icons.bookmark,
+                text: 'Orders',
               ),
+              AccountField(
+                icon: Icons.favorite,
+                text: 'Your Favourites',
+              ),
+              AccountField(
+                icon: Icons.credit_card,
+                text: 'Wallet',
+              ),
+              AccountField(
+                icon: Icons.label,
+                text: 'Promotions',
+              ),
+            ],
+          ),
+          ElevatedButton(
+            onPressed: () {
+              RepositoryProvider.of<AuthRepository>(context).signOut();
+              Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName,
+                  ModalRoute.withName('/login'));
+            },
+            child: const Center(
+              child: Text('Sign out'),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

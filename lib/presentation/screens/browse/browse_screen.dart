@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/cubits/cubits.dart';
+import '../../../bloc/cubits/cubits.dart';
 import '../widgets/widgets.dart';
 
 Map<String, String> foodTypes = {
@@ -26,112 +26,110 @@ class BrowseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                height: 50,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey[300],
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    SizedBox(
-                      width: 40,
-                      child: Icon(
-                        Icons.search,
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              height: 50,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.grey[300],
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  SizedBox(
+                    width: 40,
+                    child: Icon(
+                      Icons.search,
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Food, Restaurant, etc.',
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                       ),
                     ),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Food, Restaurant, etc.',
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Top categories',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            BlocBuilder<FoodCategoriesCubit, FoodCategoriesState>(
+              builder: (context, state) {
+                if (state is FoodCategoriesLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (state is FoodCategoriesLoaded) {
+                  return Expanded(
+                    child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Top categories',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              BlocBuilder<FoodCategoriesCubit, FoodCategoriesState>(
-                builder: (context, state) {
-                  if (state is FoodCategoriesLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  if (state is FoodCategoriesLoaded) {
-                    return Expanded(
-                      child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 1,
-                          ),
-                          itemCount: state.foodCategories.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return InkWell(
-                              onTap: () {
-                                context
-                                    .read<RestaurantsByCategoryCubit>()
-                                    .getRestaurantsByTag(state
-                                        .foodCategories.values
-                                        .elementAt(index));
+                        itemCount: state.foodCategories.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                            onTap: () {
+                              context
+                                  .read<RestaurantsByCategoryCubit>()
+                                  .getRestaurantsByTag(state
+                                      .foodCategories.values
+                                      .elementAt(index));
 
-                                Navigator.pushNamed(
-                                    context, '/browse-by-category');
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(
-                                    vertical: 5.0, horizontal: 5.0),
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1,
-                                  ),
-                                ),
-                                child: FoodType(
-                                  image: state.foodCategories.keys
-                                      .elementAt(index),
-                                  text: state.foodCategories.values
-                                      .elementAt(index),
+                              Navigator.pushNamed(
+                                  context, '/browse-by-category');
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 5.0, horizontal: 5.0),
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 1,
                                 ),
                               ),
-                            );
-                          }),
-                    );
-                  } else {
-                    return const Text('Something went wrong');
-                  }
-                },
-              )
-            ],
-          ),
+                              child: FoodType(
+                                image:
+                                    state.foodCategories.keys.elementAt(index),
+                                text: state.foodCategories.values
+                                    .elementAt(index),
+                              ),
+                            ),
+                          );
+                        }),
+                  );
+                } else {
+                  return const Text('Something went wrong');
+                }
+              },
+            )
+          ],
         ),
       ),
     );
