@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber_clone/presentation/screens/auth/login_screen.dart';
-import 'package:uber_clone/presentation/screens/main_screen.dart';
 
-import '../../bloc/blocs/blocs.dart';
+import '../../../bloc/blocs/blocs.dart';
+import '../screens.dart';
 
 class SplashScreen extends StatelessWidget {
   static const String routeName = '/splash';

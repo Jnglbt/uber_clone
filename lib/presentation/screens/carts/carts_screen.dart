@@ -6,82 +6,80 @@ class CartsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: ElevatedButton.icon(
-                  icon: Icon(Icons.bookmark_outlined),
-                  label: Text('Orders'),
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.grey[400],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.bookmark_outlined),
+                label: const Text('Orders'),
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.grey[400],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Carts',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                'Carts',
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Center(
+              child: SvgPicture.asset(
+                'assets/images/cart.svg',
+                height: 250,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Center(
+              child: Text(
+                'Add items to start a cart',
                 style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 24,
                 ),
               ),
-              SizedBox(
-                height: 100,
-              ),
-              Center(
-                child: SvgPicture.asset(
-                  'assets/images/cart.svg',
-                  height: 250,
-                  fit: BoxFit.cover,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: Text(
-                  'Add items to start a cart',
+                child: const Text(
+                  'Start shopping',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
+                    color: Colors.white,
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  child: Text(
-                    'Start shopping',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

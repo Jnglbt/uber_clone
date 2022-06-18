@@ -5,7 +5,7 @@ import 'package:uber_clone/presentation/screens/browse/browse_screen.dart';
 import 'package:uber_clone/presentation/screens/carts/carts_screen.dart';
 import 'package:uber_clone/presentation/screens/home/home_screen.dart';
 
-import '../bloc/cubits/cubits.dart';
+import '../../bloc/cubits/cubits.dart';
 
 class MainScreen extends StatelessWidget {
   static const String routeName = '/';

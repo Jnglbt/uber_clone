@@ -48,3 +48,4 @@ app.*.map.json
 ios/Runner/GoogleService-Info.plist
 android/app/google-services.json
 lib/config/app_constants.dart
+android/app/src/main/AndroidManifest.xml

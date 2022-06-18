@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber_clone/presentation/bloc/cubits/cubits.dart';
-import 'package:uber_clone/presentation/screens/home/delivery/delivery_screen.dart';
+import 'package:uber_clone/bloc/cubits/cubits.dart';
+
+import '../screens.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,11 +14,10 @@ class HomeScreen extends StatelessWidget {
         length: 2,
         child: Builder(builder: (BuildContext context) {
           final TabController tabController = DefaultTabController.of(context)!;
-          return Scaffold(
-            body: SafeArea(
-              // color: Colors.redAccent,
+          return SafeArea(
+            child: Container(
+              color: Colors.white,
               child: Column(
-                // mainAxisSize: MainAxisSize.min,
                 children: [
                   BlocBuilder<DeliveryTypeCubit, DeliveryTypeState>(
                     builder: (context, state) {
@@ -93,25 +93,24 @@ class HomeScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               'Now',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Container(
                                 margin: const EdgeInsets.only(bottom: 5),
-                                child: Text(
+                                child: const Text(
                                   '.',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 )),
-                            Text(
+                            const Text(
                               'Some street address',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            Icon(Icons.arrow_drop_down),
+                            const Icon(Icons.arrow_drop_down),
                           ],
                         ),
                       ),
-                      Icon(Icons.settings),
                     ],
                   ),
                   const Expanded(
@@ -119,9 +118,7 @@ class HomeScreen extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       children: [
                         SingleChildScrollView(child: DeliveryScreen()),
-                        Center(
-                          child: Text('Pickup'),
-                        ),
+                        PickupScreen(),
                       ],
                     ),
                   ),

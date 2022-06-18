@@ -2,13 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber_clone/presentation/bloc/blocs/auth/auth_bloc.dart';
-import 'package:uber_clone/presentation/bloc/blocs/user/user_bloc.dart';
-import 'package:uber_clone/presentation/bloc/cubits/restaurants/by_category/restaurants_by_category_cubit.dart';
 import 'package:uber_clone/presentation/screens/splash/splash_screen.dart';
 
+import 'bloc/blocs/blocs.dart';
 import 'config/config.dart';
-import 'presentation/bloc/cubits/cubits.dart';
+import '/bloc/cubits/cubits.dart';
 import 'repositories/repositories.dart';
 
 void main() async {
